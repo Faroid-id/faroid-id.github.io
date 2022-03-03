@@ -279,6 +279,16 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <h1 id="daerah"></h1>
+  <button onclick="showContries()">click me</button>
+  <script>
+    function showContries() {
+      fetch('https://api.myquran.com/v1/sholat/jadwal/1601/2022/03')
+      .then(response => response.json())
+      .then(data => document.getElementById('daerah').innerHTML=(data.data.jadwal[0].subuh));
+
+    }
+  </script>
 </body>
 
 </html>
