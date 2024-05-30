@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet Rute</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+        .leaflet-routing-container {
+            display: none; /* Hide the routing container */
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script>
+        // Fungsi pembantu untuk mendapatkan parameter dari URL
+        function getQueryParams() {
+            var params = {};
+            var queryString = window.location.search.substring(1);
+            var regex = /([^&=]+)=([^&]*)/g;
+            var m;
+            while (m = regex.exec(queryString)) {
+                params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+            }
+            return params;
+        }
+
+        // Ekstrak parameter
+        var params = getQueryParams();
+        var pointA = params.pointa ? params.pointa.split(',').map(Number) : [-7.0258277617076095, 112.75250114109045];
+        var pointB = params.pointb ? params.pointb.split(',').map(Number) : [-7.043166171737316, 112.73954439875638];
+
+        // Inisialisasi peta
+        var map = L.map('map').setView(pointA, 13);
+
+        // Tambahkan layer tile
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Definisikan titik A dan B
+        var latLngA = L.latLng(pointA[0], pointA[1]);
+        var latLngB = L.latLng(pointB[0], pointB[1]);
+
+        // Tambahkan kontrol routing dengan penanda tetapi tanpa detail arah
+        L.Routing.control({
+            waypoints: [
+                latLngA,
+                latLngB
+            ],
+            routeWhileDragging: true,
+            geocoder: L.Control.Geocoder.nominatim(),
+            createMarker: function(i, waypoint, n) {
+                return L.marker(waypoint.latLng).bindPopup(`Point ${i + 1}`);
+            }
+        }).addTo(map);
+    </script>
+</body>
+</html>
