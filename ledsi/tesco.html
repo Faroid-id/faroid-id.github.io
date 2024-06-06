@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        details {
+            background-color: #f0f0f0; /* Warna latar belakang sidepanel */
+            padding: 1.7em; /* Changed padding to em units */
+            margin-bottom: 1em; /* Changed margin to em units */
+            border: 1px solid #ddd; /* Garis border */
+            border-radius: 5px; /* Sudut bulat */
+            position: fixed; /* Tetap di posisi */
+            top: 0; /* Posisi di bagian atas */
+            left: -10em; /* Changed left to em units */
+            /* height: 100%; Tinggi sesuai ukuran layar */
+            overflow-y: auto; /* Enable scrolling jika konten melebihi ukuran */
+            width: 10em; /* Changed width to em units */
+            z-index: 999; /* Pastikan floating di atas konten lain */
+            transition: left 0.3s ease; /* Efek transisi saat dibuka */
+        }
+        
+        details[open] {
+            left: 0; /* Geser ke posisi normal saat dibuka */
+            height: 100%;
+        }
+        
+        summary {
+            cursor: pointer; /* Tampilan kursor */
+            font-weight: bold; /* Ketebalan font */
+            text-align: right;
+            display: block;
+        }
+        
+        p.hMsoTocHeading {
+            font-size: 1.6em; /* Changed font size to em units */
+            margin-top: 0.75em; /* Changed margin to em units */
+            margin-bottom: 0.5em; /* Changed margin to em units */
+        }
+        
+        p.hMsoToc1 {
+            font-size: 1.4em; /* Changed font size to em units */
+            margin-top: 0.5em; /* Changed margin to em units */
+            margin-bottom: 0.4em; /* Changed margin to em units */
+            padding-left: 1em; /* Changed padding to em units */
+        }
+        
+        p.hMsoToc2 {
+            font-size: 1.3em; /* Changed font size to em units */
+            margin-top: 0.4em; /* Changed margin to em units */
+            margin-bottom: 0.3em; /* Changed margin to em units */
+            padding-left: 2em; /* Changed padding to em units */
+        }
+        
+        p.hMsoToc3 {
+            font-size: 1.2em; /* Changed font size to em units */
+            margin-top: 0.3em; /* Changed margin to em units */
+            margin-bottom: 0.2em; /* Changed margin to em units */
+            padding-left: 3em; /* Changed padding to em units */
+        }
+
+        details[open] summary::before {
+            padding-right: 0.5em; /* Changed padding to em units */
+        }
+    </style>
+
+</head>
+
+<body>
+    <details id="sidebar">
+        <summary>=</summary>
+        <p class=hMsoTocHeading><span lang=EN-US>Contents</span></p>
+
+        <p class=hMsoToc1><a target="_blank" href="#_Toc164592008">Ringkasan Eksekutif<span style='color:windowtext;display:none;text-decoration:none'> </span><span style='color:windowtext;display:none;text-decoration:none'>9</span></a></p>
+
+        <p class=hMsoToc1><a target="_blank" href="#_Toc164592009"><span lang=EN-US>BAB I. Pendahuluan</span><span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>12</span></a></p>
+
+        <p class=hMsoToc2><a target="_blank" href="#_Toc164592010"><span lang=EN-US>A.</span><span style='font-family:"Calibri",sans-serif;color:windowtext;text-decoration:none'> </span><span lang=EN-US>Dasar Penyusunan</span><span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>12</span></a></p>
+
+        <p class=hMsoToc2><a target="_blank" href="#_Toc164592011"><span lang=EN-US>B.</span><span style='font-family:"Calibri",sans-serif;color:windowtext;text-decoration:none'> </span><span lang=EN-US>Tim Penyusun dan Tanggungjawabnya</span><span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>14</span></a></p>
+
+        <p class=hMsoToc2><a target="_blank" href="#_Toc164592012">C.<span style='font-family:"Calibri",sans-serif;color:windowtext;text-decoration:none'> </span>Mekanisme Kerja Penyusunan Evaluasi Diri<span style='color:windowtext;display:none;text-decoration:none'> </span><span style='color:windowtext;display:none;text-decoration:none'>16</span></a></p>
+
+        <p class=hMsoToc1><a target="_blank" href="#_Toc164592013"><span lang=EN-US>BAB II. Laporan Evaluasi Diri</span><span style='color:windowtext;display:none;text-decoration:none'> </span><span style='color:windowtext;display:none;text-decoration:none'>18</span></a></p>
+
+        <p class=hMsoToc2><a target="_blank" href="#_Toc164592014">A.<span style='font-family:"Calibri",sans-serif;color:windowtext;text-decoration:none'> </span>Kondisi Eksternal<span style='color:windowtext;display:none;text-decoration:none'> </span><span style='color:windowtext;display:none;text-decoration:none'>18</span></a></p>
+
+        <p class=hMsoToc2><a target="_blank" href="#_Toc164592015">B.<span style='font-family:"Calibri",sans-serif;color:windowtext;text-decoration:none'> </span>Profil Unit Pengelola Program Studi<span style='color:windowtext;display:none;text-decoration:none'> </span><span style='color:windowtext;display:none;text-decoration:none'>21</span></a></p>
+
+        <p class=hMsoToc2><a target="_blank" href="#_Toc164592016">C.<span style='font-family:"Calibri",sans-serif;color:windowtext;text-decoration:none'> </span>Kriteria<span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>22</span></a></p>
+
+        <p class=hMsoToc3><a target="_blank" href="#_Toc164592017">C.1. Visi, Misi, Tujuan, dan Strategi<span style='color:windowtext;display:none;text-decoration:none'> </span><span style='color:windowtext;display:none;text-decoration:none'>22</span></a></p>
+
+        <p class=hMsoToc3><a target="_blank" href="#_Toc164592018">C.2. Tata pamong, Tata Kelola dan Kerjasama<span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>42</span></a></p>
+
+        <p class=hMsoToc3><a target="_blank" href="#_Toc164592019">C.3. Mahasiswa<span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>64</span></a></p>
+
+        <p class=hMsoToc3><a target="_blank" href="#_Toc164592020">C.4. Sumber Daya Manusia<span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>75</span></a></p>
+
+        <p class=hMsoToc3><a target="_blank" href="#_Toc164592021">C.5. Keuangan, Sarana dan Prosarana<span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>88</span></a></p>
+
+        <p class=hMsoToc3><a target="_blank" href="#_Toc164592022">C.6. Pendidikan<span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>94</span></a></p>
+
+        <p class=hMsoToc3><a target="_blank" href="#_Toc164592023">C.7. Penelitian<span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>125</span></a></p>
+
+        <p class=hMsoToc3><a target="_blank" href="#_Toc164592024">C.8. Pengabdian Kepada Masyarakat<span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>139</span></a></p>
+
+        <p class=hMsoToc3><a target="_blank" href="#_Toc164592025">C.9. Luaran dan Capaian Tridharma<span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>144</span></a></p>
+
+        <p class=hMsoToc2><a target="_blank" href="#_Toc164592026">D.<span style='font-family:"Calibri",sans-serif;color:windowtext;text-decoration:none'> </span>Analisis dan Penetapan Program Pengembangan Unit Pengelola Program Studi<span style='color:windowtext;display:none;text-decoration:none'>. </span><span style='color:windowtext;display:none;text-decoration:none'>159</span></a></p>
+
+        <p class=hMsoToc1><a target="_blank" href="#_Toc164592027"><span lang=EN-US>BAB III. Penutup</span><span style='color:windowtext;display:none;text-decoration:none'> </span><span style='color:windowtext;display:none;text-decoration:none'>168</span></a></p>
+
+        <p class=hMsoToc1><a target="_blank" href="#_Toc164592028"><span lang=EN-US>Lampiran</span><span style='color:windowtext;display:none;text-decoration:none'> </span><span style='color:windowtext;display:none;text-decoration:none'>171</span></a></p>
+
+    </details>
+
+    <script>
+        // Function to close the sidebar when clicking outside of it
+        document.addEventListener('click', function(event) {
+            var sidebar = document.getElementById('sidebar');
+            var isClickInside = sidebar.contains(event.target);
+            if (!isClickInside) {
+                sidebar.removeAttribute('open');
+            }
+        });
+
+        // Function to prevent the summary click from closing the sidebar
+        var summary = document.querySelector('details summary');
+        summary.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+    </script>
+
+</body>
+
+</html>
