@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fazzio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .slideshow-container {
+      position: relative;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .fazzio {
+      display: none;
+      width: 100%;
+    }
+
+    .fazzio img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+  </style>
+</head>
+<body>
+<div class="slideshow-container">
+  <div class="fazzio"><img src="1.png" alt="Slide 1"></div>
+  <div class="fazzio"><img src="2.png" alt="Slide 2"></div>
+  <div class="fazzio"><img src="3.png" alt="Slide 3"></div>
+  <div class="fazzio"><img src="4.png" alt="Slide 4"></div>
+  <div class="fazzio"><img src="5.png" alt="Slide 5"></div>
+  <div class="fazzio"><img src="6.png" alt="Slide 6"></div>
+  <div class="fazzio"><img src="7.png" alt="Slide 7"></div>
+  <div class="fazzio"><img src="8.png" alt="Slide 8"></div>
+  <div class="fazzio"><img src="9.png" alt="Slide 9"></div>
+  <div class="fazzio"><img src="10.png" alt="Slide 10"></div>
+  <div class="fazzio"><img src="11.png" alt="Slide 11"></div>
+  <div class="fazzio"><img src="12.png" alt="Slide 12"></div>
+  <div class="fazzio"><img src="13.png" alt="Slide 13"></div>
+  <div class="fazzio"><img src="14.png" alt="Slide 14"></div>
+  <div class="fazzio"><img src="15.png" alt="Slide 15"></div>
+  <div class="fazzio"><img src="16.png" alt="Slide 16"></div>
+  <div class="fazzio"><img src="17.png" alt="Slide 17"></div>
+  <div class="fazzio"><img src="18.png" alt="Slide 18"></div>
+  <div class="fazzio"><img src="19.png" alt="Slide 19"></div>
+  <div class="fazzio"><img src="20.png" alt="Slide 20"></div>
+  <div class="fazzio"><img src="21.png" alt="Slide 21"></div>
+  <div class="fazzio"><img src="22.png" alt="Slide 22"></div>
+  <div class="fazzio"><img src="23.png" alt="Slide 23"></div>
+  <div class="fazzio"><img src="24.png" alt="Slide 24"></div>
+  <div class="fazzio"><img src="25.png" alt="Slide 25"></div>
+  <div class="fazzio"><img src="26.png" alt="Slide 26"></div>
+  <div class="fazzio"><img src="27.png" alt="Slide 27"></div>
+  <div class="fazzio"><img src="28.png" alt="Slide 28"></div>
+  <div class="fazzio"><img src="29.png" alt="Slide 29"></div>
+  <div class="fazzio"><img src="30.png" alt="Slide 30"></div>
+  <div class="fazzio"><img src="31.png" alt="Slide 31"></div>
+  <div class="fazzio"><img src="32.png" alt="Slide 32"></div>
+  <div class="fazzio"><img src="33.png" alt="Slide 33"></div>
+  <div class="fazzio"><img src="34.png" alt="Slide 34"></div>
+  <div class="fazzio"><img src="35.png" alt="Slide 35"></div>
+  <div class="fazzio"><img src="36.png" alt="Slide 36"></div>
+</div>
+
+<audio id="bgm">
+  <source src="OIIAOIIA.mp3" type="audio/mpeg">
+  Browser kamu tidak mendukung audio.
+</audio>
+
+<script>
+  const totalFrames = 36;
+  const freezeImgIndex = 0; // gambar 1.png
+
+  // Delay per langkah (freeze & spinning)
+  const delays = [];
+
+  // Freeze 1
+  delays.push({ type: "freeze", delay: 1490 });
+
+  // Spin 1
+  for (let i = 0; i < totalFrames; i++) {
+    delays.push({ type: "spin", frame: i, delay: 42.78 });
+  }
+
+  // Freeze 2
+  delays.push({ type: "freeze", delay: 1300 });
+
+  // Spin 2
+  for (let i = 0; i < totalFrames; i++) {
+    delays.push({ type: "spin", frame: i, delay: 56.67 });
+  }
+
+  // Freeze 3
+  delays.push({ type: "freeze", delay: 1290 });
+
+  // Spin 3
+  for (let i = 0; i < totalFrames; i++) {
+    delays.push({ type: "spin", frame: i, delay: 69.17 });
+  }
+
+  // Spin 4 (tidak ada freeze sebelum)
+  for (let i = 0; i < totalFrames; i++) {
+    delays.push({ type: "spin", frame: i, delay: 37.5 });
+  }
+
+  // Freeze 4 (akhir)
+  delays.push({ type: "freeze", delay: 970 });
+
+  let currentStep = 0;
+
+  // Tampilkan gambar sesuai step
+  function showSlides() {
+    const slides = document.querySelectorAll(".fazzio");
+    slides.forEach(slide => slide.style.display = "none");
+
+    const step = delays[currentStep];
+    const imgIndex = (step.type === "spin") ? step.frame : freezeImgIndex;
+
+    slides[imgIndex].style.display = "block";
+
+    currentStep++;
+    if (currentStep < delays.length) {
+      setTimeout(showSlides, step.delay);
+    }
+  }
+
+  // Saat halaman dimuat, langsung tampilkan gambar pertama
+  window.onload = () => {
+    const slides = document.querySelectorAll(".fazzio");
+    slides.forEach(slide => slide.style.display = "none");
+    slides[freezeImgIndex].style.display = "block";
+
+    const audio = document.getElementById("bgm");
+
+    document.body.addEventListener("click", () => {
+      audio.play();
+      showSlides();
+    }, { once: true });
+  };
+</script>
+
+</body>
+</html>
