@@ -1,1 +1,0 @@
-function e(){r++,o.innerHTML=r}function n(){r=0,o.innerHTML=0}var t=document.querySelector(".left-nav-button"),c=document.querySelector(".tap-button"),o=document.querySelector(".count.label"),r=0;c.addEventListener("click",e),t.addEventListener("click",n);

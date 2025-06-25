@@ -1,1 +1,32 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><title>Tap Counter</title><meta name="description" content=""><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="stylesheet" href="css/style.css"></head><body><div class="app-container"><div class="ios-nav-bar"><div class="nav-item"><button class="left-nav-button">Reset</button></div><div class="nav-item"><h1 class="title">Counter</h1></div><div class="nav-item"><button class="right-nav-button">Info</button></div></div><div class="tap-container"><div class="tap-contents"><p class="count label">0</p><button class="tap-button">Tap</button></div></div></div></body><script src="js/script.js"></script></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <!-- iOS support -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Tap Counter" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <!-- Theme color for Android status bar -->
+  <meta name="theme-color" content="#7c3aed" />
+  <title>Tasbeh</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+        <button id="option-button">Option</button>
+        <h1>Tasbeh</h1>
+        <button id="reset-button">Reset</button>
+    </header>
+
+    <main class="app-main">
+      <div id="counter">0</div>
+      <button id="tap-button">Tap</button>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
