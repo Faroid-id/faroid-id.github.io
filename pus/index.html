@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bestie! 🎉</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .bounce-in {
+            animation: bounceIn 1s ease-out;
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .wiggle {
+            animation: wiggle 0.5s ease-in-out;
+        }
+        
+        .rainbow-text {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 3s ease infinite;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+        
+        @keyframes rainbow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: confetti-fall 3s linear infinite;
+        }
+        
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 overflow-x-hidden">
+    <!-- Confetti -->
+    <div id="confetti-container" class="fixed inset-0 pointer-events-none z-10"></div>
+    
+    <div class="container mx-auto px-4 py-8 relative z-20">
+        <!-- Header -->
+        <div class="text-center mb-8 bounce-in">
+            <h1 class="text-6xl md:text-8xl font-black rainbow-text mb-4">
+                HAPPY BIRTHDAY! 🎂
+            </h1>
+            <p class="text-white text-xl md:text-2xl font-semibold">
+                Anak Ayah, it's your special day! ✨
+            </p>
+            
+            <!-- Photo Placeholder -->
+            <div class="mt-8 flex justify-center">
+                <div class="w-48 h-48 bg-white/20 backdrop-blur-sm rounded-full border-4 border-white/30 flex items-center justify-center shadow-2xl">
+                    <div class="text-center">
+                       <img src="boo.webp" class="rounded-full alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="max-w-4xl mx-auto">
+            <!-- Meme Cards -->
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-3xl p-6 shadow-2xl transform hover:scale-105 transition-all duration-300 float">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🎈</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">POV:</h3>
+                        <p class="text-lg text-gray-600">
+                            Kamu udah level up (bahasa halus dari semester tua) tapi masih aja ngakak sama meme kucing 😹
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-white rounded-3xl p-6 shadow-2xl transform hover:scale-105 transition-all duration-300 float" style="animation-delay: 0.5s;">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🍰</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Fun Fact:</h3>
+                        <p class="text-lg text-gray-600">
+                            Age up tapi mental masih bocil 🤪
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bg-white rounded-3xl p-6 shadow-2xl transform hover:scale-105 transition-all duration-300 float" style="animation-delay: 1s;">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🎁</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Breaking News:</h3>
+                        <p class="text-lg text-gray-600">
+                            Local bestie leveled up, masih refuse to be mature! 📰
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="bg-white rounded-3xl p-6 shadow-2xl transform hover:scale-105 transition-all duration-300 float" style="animation-delay: 1.5s;">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🎉</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">No Cap:</h3>
+                        <p class="text-lg text-gray-600">
+                            Kamu aging like fine wine... atau mungkin like expired milk? 🥛
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Interactive Buttons -->
+            <div class="text-center mb-8">
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button id="vibeBtn" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-lg transform hover:scale-110 transition-all duration-300 shadow-lg">
+                        Vibe Check ✨
+                    </button>
+                    <button id="roastBtn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-full text-lg transform hover:scale-110 transition-all duration-300 shadow-lg">
+                        Roast Mode 🔥
+                    </button>
+                    <button id="wholesome" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full text-lg transform hover:scale-110 transition-all duration-300 shadow-lg">
+                        Wholesome Mode 💚
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Message Display -->
+            <div id="messageBox" class="bg-white rounded-3xl p-8 shadow-2xl text-center mb-8 min-h-[200px] flex items-center justify-center">
+                <p class="text-2xl text-gray-600 font-semibold">
+                    Klik salah satu tombol di atas untuk pesan spesial! 👆
+                </p>
+            </div>
+            
+            <!-- Birthday Cake -->
+            <div class="text-center mb-8">
+                <div class="inline-block cursor-pointer" id="cake">
+                    <svg width="200" height="200" viewBox="0 0 200 200" class="hover:scale-110 transition-transform duration-300">
+                        <!-- Cake Base -->
+                        <rect x="40" y="120" width="120" height="60" fill="#8B4513" rx="10"/>
+                        <rect x="50" y="100" width="100" height="40" fill="#DEB887" rx="8"/>
+                        <rect x="60" y="80" width="80" height="30" fill="#F4A460" rx="6"/>
+                        
+                        <!-- Candles -->
+                        <rect x="70" y="60" width="4" height="20" fill="#FFD700"/>
+                        <rect x="90" y="60" width="4" height="20" fill="#FFD700"/>
+                        <rect x="110" y="60" width="4" height="20" fill="#FFD700"/>
+                        <rect x="130" y="60" width="4" height="20" fill="#FFD700"/>
+                        
+                        <!-- Flames -->
+                        <ellipse cx="72" cy="55" rx="3" ry="8" fill="#FF4500" class="float"/>
+                        <ellipse cx="92" cy="55" rx="3" ry="8" fill="#FF4500" class="float"/>
+                        <ellipse cx="112" cy="55" rx="3" ry="8" fill="#FF4500" class="float"/>
+                        <ellipse cx="132" cy="55" rx="3" ry="8" fill="#FF4500" class="float"/>
+                        
+                        <!-- Decorations -->
+                        <circle cx="80" cy="110" r="5" fill="#FF69B4"/>
+                        <circle cx="120" cy="110" r="5" fill="#FF69B4"/>
+                        <circle cx="100" cy="90" r="4" fill="#00CED1"/>
+                    </svg>
+                </div>
+                <p class="text-white text-lg mt-4 font-semibold">Klik kue untuk surprise! 🎂</p>
+            </div>
+            
+            <!-- Footer -->
+            <div class="text-center">
+                <p class="text-white text-xl font-semibold mb-4">
+                    Semoga panjang umur, sehat selalu, dan tetap jadi bestie tergokil! 🥳
+                </p>
+                <p class="text-white text-lg opacity-80">
+                    From your favorite chaotic friend 💕
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Messages for different buttons
+        const messages = {
+            vibe: [
+                "Vibe check passed! ✅ Kamu masih cool kayak dulu kok! 😎",
+                "Energy kamu hari ini: Main character vibes! ✨",
+                "Vibe report: 10/10 would hang out again! 🔥",
+                "Current mood: Birthday royalty! 👑"
+            ],
+            roast: [
+                "Selamat ya udah berhasil survive satu tahun lagi tanpa jadi dewasa! 😂",
+                "Happy birthday! Semoga tahun ini kamu belajar ganti oli 🛵",
+                "Another year wiser, another year of asking 'udah makan belum?' 🍚"
+            ],
+            wholesome: [
+                "Kamu adalah salah satu anak terbaik yang pernah ada di hidup ayah! 💕",
+                "Grateful banget punya teman kayak kamu. Happy birthday, bestie! 🌟",
+                "Semoga semua impian kamu tercapai tahun ini! You deserve all the happiness! ✨",
+                "Thank you for being such an amazing friend. Here's to another year of adventures! 🎈"
+            ]
+        };
+        
+        // Button event listeners
+        document.getElementById('vibeBtn').addEventListener('click', function() {
+            showMessage('vibe');
+            this.classList.add('wiggle');
+            setTimeout(() => this.classList.remove('wiggle'), 500);
+        });
+        
+        document.getElementById('roastBtn').addEventListener('click', function() {
+            showMessage('roast');
+            this.classList.add('wiggle');
+            setTimeout(() => this.classList.remove('wiggle'), 500);
+        });
+        
+        document.getElementById('wholesome').addEventListener('click', function() {
+            showMessage('wholesome');
+            this.classList.add('wiggle');
+            setTimeout(() => this.classList.remove('wiggle'), 500);
+        });
+        
+        // Cake click event
+        document.getElementById('cake').addEventListener('click', function() {
+            this.classList.add('wiggle');
+            createConfetti();
+            showGiftPopup();
+            setTimeout(() => this.classList.remove('wiggle'), 500);
+        });
+        
+        function showMessage(type) {
+            const messageBox = document.getElementById('messageBox');
+            let message;
+            
+            if (type === 'cake') {
+                message = "🎉 SURPRISE! 🎉<br><br>Semoga wish kamu terkabul semua! Make a wish dan blow the candles! 🕯️✨";
+            } else {
+                const randomMessage = messages[type][Math.floor(Math.random() * messages[type].length)];
+                message = randomMessage;
+            }
+            
+            messageBox.innerHTML = `<p class="text-2xl text-gray-800 font-semibold">${message}</p>`;
+            messageBox.classList.add('bounce-in');
+            
+            setTimeout(() => {
+                messageBox.classList.remove('bounce-in');
+            }, 1000);
+        }
+        
+        function showGiftPopup() {
+            // Hardcoded gift links - ganti dengan link yang kamu mau!
+            const giftLinks = [
+                "https://app.shopeepay.co.id/u/sfS8MnqwZ7iJ5BisuZrxG"
+            ];
+            
+            // Pick random gift link
+            const randomGift = giftLinks[Math.floor(Math.random() * giftLinks.length)];
+            
+            // Create custom popup modal
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-3xl p-8 max-w-md mx-4 shadow-2xl bounce-in">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🎁</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">SURPRISE TIME!</h3>
+                        <p class="text-gray-600 mb-6">Ada hadiah spesial nih buat kamu! 🎉</p>
+                        <div class="bg-gradient-to-r from-pink-100 to-purple-100 p-4 rounded-xl mb-6">
+                            <p class="text-sm text-gray-600 mb-2">🔗 Link Hadiah:</p>
+                            <p class="text-blue-600 font-mono text-sm break-all">${randomGift}</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <button id="openGiftBtn" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl">
+                                🎉 Buka Hadiah!
+                            </button>
+                            <button id="cancelBtn" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-xl">
+                                ❌ Tutup
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Handle open gift button
+            document.getElementById('openGiftBtn').addEventListener('click', function() {
+                window.open(randomGift, '_blank', 'noopener,noreferrer');
+                document.body.removeChild(modal);
+                showMessage('cake');
+            });
+            
+            // Handle cancel button
+            document.getElementById('cancelBtn').addEventListener('click', function() {
+                document.body.removeChild(modal);
+                showMessage('cake');
+            });
+            
+            // Close on backdrop click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    document.body.removeChild(modal);
+                    showMessage('cake');
+                }
+            });
+        }
+        
+        // Confetti function
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                
+                container.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        // Auto confetti on load
+        window.addEventListener('load', function() {
+            setTimeout(createConfetti, 1000);
+        });
+    </script>
+</html>
