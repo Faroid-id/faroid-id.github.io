@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Ulang Tahun Rip Yang Qi 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      overflow-x: hidden;
+      text-align: center;
+      color: #333;
+    }
+
+    header {
+      padding: 30px 10px 10px;
+      position: relative;
+      overflow: hidden;
+      height: 120px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin: 0;
+      color: #d84315;
+      animation: vibrate 0.2s infinite;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes vibrate {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      20% { transform: translate(-1px, -2px) rotate(-1deg); }
+      40% { transform: translate(-3px, 0px) rotate(1deg); }
+      60% { transform: translate(3px, 2px) rotate(0deg); }
+      80% { transform: translate(1px, -1px) rotate(1deg); }
+      100% { transform: translate(-1px, 2px) rotate(-1deg); }
+    }
+
+    /* motor */
+    .motor {
+      font-size: 2rem;
+      position: absolute;
+      white-space: nowrap;
+      z-index: 1;
+    }
+
+    /* flip motor kalau dari kiri */
+    .flip {
+      transform: scaleX(-1);
+      display: inline-block;
+    }
+
+    /* animasi zigzag */
+    @keyframes zigzagKiri {
+      0% { transform: translateX(0) translateY(0); }
+      25% { transform: translateX(25vw) translateY(-30px); }
+      50% { transform: translateX(50vw) translateY(30px); }
+      75% { transform: translateX(75vw) translateY(-30px); }
+      100% { transform: translateX(100vw) translateY(30px); }
+    }
+
+    @keyframes zigzagKanan {
+      0% { transform: translateX(0) translateY(0); }
+      25% { transform: translateX(-25vw) translateY(30px); }
+      50% { transform: translateX(-50vw) translateY(-30px); }
+      75% { transform: translateX(-75vw) translateY(30px); }
+      100% { transform: translateX(-100vw) translateY(-30px); }
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .photo-placeholder {
+      width: 250px;
+      height: 250px;
+      background: url("sesad.jpeg") center/cover no-repeat;
+      border-radius: 50%;
+      margin: 20px auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .photo-placeholder:hover {
+      transform: rotate(5deg) scale(1.05);
+    }
+
+    .highlight {
+      background: #fff3e0;
+      padding: 15px;
+      border-left: 6px solid #ff7043;
+      margin: 25px auto;
+      border-radius: 8px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    .card {
+      background: #fff8e1;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      margin: 20px 0;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: rotate(-2deg) scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .message {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 15px;
+      background: #fff3e0;
+      border-top: 2px dashed #ff7043;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    /* confetti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      top: -10px;
+      animation: fall 5s linear infinite;
+      z-index: 10;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+  </style>
+  <style>
+    /* page layout for demo */
+    body { font-family: system-ui, Arial; margin:0; line-height:1.4; }
+    main { padding:24px; min-height:200vh; /* make page scrollable for demo */ }
+
+    /* prevent scrolling while modal is open */
+    .modal-open { overflow: hidden; }
+
+    /* modal overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;                         /* top:0; right:0; bottom:0; left:0; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.6);
+      z-index: 10000;
+    }
+
+    .modal-card {
+      background: #fff;
+      padding: 22px;
+      border-radius: 10px;
+      width: min(420px, 92%);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      text-align: center;
+    }
+
+    h2 { margin: 0 0 8px 0; font-size: 1.25rem; }
+    p { margin: 0 0 16px 0; color: #333; }
+
+    /* the single "Yes" button */
+    #soundYes {
+      display:inline-block;
+      padding:10px 18px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: #0b74ff;
+      color: white;
+      cursor: pointer;
+    }
+    #soundYes:active { transform: translateY(1px); }
+    #soundYes[disabled] { opacity: 0.6; cursor: default; }
+
+    /* small fade-out for closing */
+    .fade-out { animation: fadeOut 300ms forwards; }
+    @keyframes fadeOut { to { opacity: 0; transform: scale(0.98); } }
+  </style>
+</head>
+<body>
+
+  <main id="mainContent" aria-hidden="false">
+  <header>
+    <h1>🎉 Selamat Ulang Tahun Rip Yang Qi 🎉</h1>
+    <div id="motor-lane"></div>
+  </header>
+
+  <div class="container">
+    <div class="photo-placeholder"></div>
+
+    <div class="highlight">
+      🚀 "Keep Riding, Keep Smiling — hidupmu gaspol tanpa rem drama!"
+    </div>
+
+    <div class="card">
+      <p class="message">🔧 Semoga hidupmu lebih halus daripada mesin motor habis ganti oli!</p>
+    </div>
+
+    <div class="card">
+      <p class="message">👨 Semoga segera ditemukan dengan masimonyaaaaa!</p>
+    </div>
+
+    <div class="card">
+      <p class="message">📚 Skripsi boleh lama asal selesai, tapi aku tau kamu lebih tahan banting daripada ban motor tubeless!</p>
+    </div>
+
+    <div class="card">
+      <p class="message">🔥 Semangatmu semoga selalu full tank, nggak pernah mogok di jalan hidup.</p>
+    </div>
+
+    <div class="card">
+      <p class="message">😂 Motor aja bisa overheat, kamu juga boleh rebahan sebentar. Tapi jangan lama-lama ya!</p>
+    </div>
+
+    <div class="card">
+      <p class="message">🌸 Happy Birthday! Semoga tiap tahun hidupmu makin kenceng tarikannya, tapi tetep irit drama.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>✨ Dari entitas bergelar S.Kom : selalu siap jadi mekanik cadangan kalau motor kamu mogok ✨</p>
+  </footer>
+  </main>
+
+   <!-- Modal (only one button) - cannot be dismissed except by clicking Yes -->
+  <div id="soundModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card" role="document">
+      <h2 id="modalTitle">Sound on?</h2>
+      <p>Enable audio for the best experience.</p>
+      <button id="soundYes" type="button" aria-label="Enable sound">Yes</button>
+    </div>
+  </div>
+  <audio id="bgAudio"
+         src="geber.mp3"
+         preload="auto"
+         loop
+         crossorigin="anonymous">
+    Your browser does not support the audio element.
+  </audio>
+  <script>
+    // confetti generator
+    function createConfetti() {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      confetti.style.left = Math.random() * window.innerWidth + "px";
+      confetti.style.backgroundColor = `hsl(${Math.random()*360}, 70%, 60%)`;
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(confetti);
+
+      setTimeout(() => confetti.remove(), 5000);
+    }
+    setInterval(createConfetti, 200);
+
+    // motor generator
+    const motors = ["🏍️💨", "🛵💨", "🏍️🔥", "🛵✨", "🏍️⚡"];
+
+    function spawnMotor() {
+      const motor = document.createElement("div");
+      motor.classList.add("motor");
+
+      const emoji = motors[Math.floor(Math.random() * motors.length)];
+
+      // bungkus emoji biar bisa di-flip
+      const span = document.createElement("span");
+      span.textContent = emoji;
+
+      // posisi vertikal random di seluruh layar
+      const topPos = Math.random() * window.innerHeight;
+      motor.style.top = topPos + "px";
+
+      // arah random
+      const arahKiri = Math.random() > 0.5;
+      if (arahKiri) {
+        motor.style.left = "0";
+        motor.style.animation = "zigzagKiri 6s linear forwards";
+        span.classList.add("flip"); // flip motor
+      } else {
+        motor.style.right = "0";
+        motor.style.animation = "zigzagKanan 6s linear forwards";
+      }
+
+      motor.appendChild(span);
+      document.body.appendChild(motor);
+
+      setTimeout(() => motor.remove(), 6500);
+    }
+
+    setInterval(spawnMotor, 1800);
+
+  </script>
+  <script>
+    (function () {
+      const audio = document.getElementById('bgAudio');
+      const modal = document.getElementById('soundModal');
+      const yesBtn = document.getElementById('soundYes');
+      const main = document.getElementById('mainContent');
+
+      // Remember previously focused element so we can restore focus later
+      const previouslyFocused = document.activeElement;
+
+      // Show modal on load (markup already visible). Disable page scroll.
+      document.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.add('modal-open');
+        main.setAttribute('aria-hidden', 'true');
+        // put focus on the Yes button for keyboard users
+        yesBtn.focus();
+      });
+
+      // Keep keyboard focus trapped to the Yes button (single-button dialog)
+      modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          // single focusable control — keep it focused
+          e.preventDefault();
+          yesBtn.focus();
+        }
+        // NOTE: We intentionally do not listen for Esc to close,
+        // because requirement was "only yes button" (no other dismiss).
+      });
+
+      // Click handler: attempt to play audio and close modal
+      yesBtn.addEventListener('click', async () => {
+        yesBtn.disabled = true; // prevent double clicks
+
+        // ensure audio starts from the beginning (optional)
+        try { audio.currentTime = 0; } catch(e){ /* ignore */ }
+
+        try {
+          // user gesture (click) should allow playback
+          await audio.play();
+        } catch (err) {
+          // fallback: some edge cases may still reject — try muted-play fallback
+          console.warn('Initial play() rejected, trying muted fallback.', err);
+          try {
+            audio.muted = true;
+            await audio.play();
+            // unmute after playback starts so user hears it
+            audio.muted = false;
+          } catch (err2) {
+            // if playback still fails, log and continue closing modal (so page is usable)
+            console.error('Audio playback failed after fallback:', err2);
+          }
+        } finally {
+          closeModal();
+        }
+      });
+
+      function closeModal() {
+        // animate out then remove modal and re-enable scrolling & accessibility
+        const card = modal.querySelector('.modal-card');
+        if (card) card.classList.add('fade-out');
+
+        // small timeout to let fade run
+        setTimeout(() => {
+          if (modal && modal.parentNode) modal.parentNode.removeChild(modal);
+        }, 260);
+
+        document.body.classList.remove('modal-open');
+        main.removeAttribute('aria-hidden');
+
+        // restore focus where it previously was (or to main content)
+        try {
+          if (previouslyFocused && previouslyFocused.focus) previouslyFocused.focus();
+          else main.focus && main.focus();
+        } catch (e) { /* ignore */ }
+      }
+
+      // Helpful: if you want a default volume (0.0 - 1.0), set it here:
+      // audio.volume = 0.8;
+
+      // NOTE: If testing from file:// you may run into browser loading restrictions.
+      // Serve files over http(s) (e.g., local dev server) for reliable audio loading.
+    })();
+  </script>
+
+</body>
+</html>
