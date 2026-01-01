@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Selamat Ulang Tahun! 🎉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: #fef9f3;
+        }
+
+        /* ===== PRELOAD PAGE ===== */
+        .preload-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .preload-page.hidden {
+            opacity: 0;
+            transform: scale(1.1);
+            pointer-events: none;
+        }
+
+        .preload-content {
+            text-align: center;
+            color: white;
+        }
+
+        .preload-icon {
+            font-size: 100px;
+            margin-bottom: 20px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .preload-title {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .preload-subtitle {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .enter-btn {
+            padding: 15px 50px;
+            font-size: 1.2em;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .enter-btn:active {
+            transform: translateY(-2px);
+        }
+
+        /* ===== MAIN PAGE ===== */
+        .main-page {
+            opacity: 0;
+            transition: opacity 1s;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .main-page.show {
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            color: #764ba2;
+            margin-bottom: 10px;
+            animation: slideDown 1s;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            color: #666;
+            animation: slideDown 1.2s;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== PHOTO SECTION ===== */
+        .photo-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .photo-caption {
+            padding: 20px;
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+            background: #f8f9fa;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== WISH SECTION ===== */
+        .wish-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeInUp 1.5s;
+        }
+
+        .wish-section h2 {
+            color: #764ba2;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .wish-text {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #555;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* ===== DOOR PRIZE SECTION ===== */
+        .doorprize-section {
+            text-align: center;
+            margin: 50px 0;
+            animation: fadeInUp 1.8s;
+        }
+
+        .doorprize-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .gift-box {
+            font-size: 100px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: inline-block;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .gift-box.opened {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .doorprize-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 40px;
+            font-size: 1.3em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3);
+        }
+
+        .doorprize-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(118, 75, 162, 0.4);
+        }
+
+        .doorprize-btn:active {
+            transform: translateY(-2px);
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: modalSlideDown 0.5s;
+        }
+
+        @keyframes modalSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .modal h2 {
+            color: #764ba2;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .modal p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .prize-link {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+
+        .prize-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(118, 75, 162, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        /* ===== CONFETTI ===== */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f0f;
+            position: absolute;
+            animation: confetti-fall 3s linear;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .preload-title {
+                font-size: 2em;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .header p {
+                font-size: 1em;
+            }
+
+            .photo-section {
+                grid-template-columns: 1fr;
+            }
+
+            .wish-section {
+                padding: 25px;
+            }
+
+            .gift-box {
+                font-size: 70px;
+            }
+        }
+
+        /* ===== FLOATING BALLOONS ===== */
+        .balloon {
+            position: fixed;
+            bottom: -100px;
+            font-size: 50px;
+            animation: float-up 6s ease-in infinite;
+            z-index: -1;
+        }
+
+        @keyframes float-up {
+            to {
+                bottom: 110vh;
+                transform: translateX(50px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PRELOAD PAGE -->
+    <div class="preload-page" id="preloadPage">
+        <div class="preload-content">
+            <div class="preload-icon">🎂</div>
+            <h1 class="preload-title">Halo Ada Kejutan :D</h1>
+            <p class="preload-subtitle">Klik tombol di bawah buka ya</p>
+            <button class="enter-btn" onclick="enterSite()">🎉 Buka Sekarang 🎉</button>
+        </div>
+    </div>
+
+    <!-- MAIN PAGE -->
+    <div class="main-page" id="mainPage">
+        <!-- Floating Balloons -->
+        <div class="balloon" style="left: 10%; animation-delay: 0s;">🎈</div>
+        <div class="balloon" style="left: 30%; animation-delay: 2s;">🎈</div>
+        <div class="balloon" style="left: 50%; animation-delay: 4s;">🎈</div>
+        <div class="balloon" style="left: 70%; animation-delay: 1s;">🎈</div>
+        <div class="balloon" style="left: 90%; animation-delay: 3s;">🎈</div>
+
+        <div class="container">
+            <!-- Header -->
+            <div class="header">
+                <h1>🎉 Selamat Ulang Tahun! 🎉</h1>
+                <p>Semoga hari ini penuh kebahagiaan dan berkat</p>
+            </div>
+
+            <!-- Photo Section -->
+            <div class="photo-section">
+                <div class="photo-card">
+                    <img src="lilin.jpeg" alt="Foto 1">
+                    <div class="photo-caption">
+                        ✨ jangan lupa tiup wkkwkwk ✨
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="main.jpeg" alt="Foto 2">
+                    <div class="photo-caption">
+                        ✨ one of today's footage ✨
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wish Section -->
+            <div class="wish-section">
+                <h2>💌 Ucapan Spesial 💌</h2>
+                <p class="wish-text">
+                    Di hari istimewa ini yang kebetulan nyuyer juga, selamat ulang tahun yaw!
+                    Semoga semua impian dan harapanmu terwujud. Teruslah menjadi 
+                    pribadi yang luar biasa seperti sekarang. Semoga umurnya barokah, 
+                    sehat selalu (fisik dan mental :v), dan sukses dalam segala hal.
+                    <br><br>
+                    <strong>🎂 Happy Birthday! 🎂</strong>
+                </p>
+            </div>
+            
+            <div class="wish-section">
+                <h2>📅 Fun Fact 📅</h2>
+                <p class="wish-text">
+                    2025 tahunnya dimulai dari hari rabu->kamis->jumat yang mana kalo disingkat
+                    dalam bahasa inggris jadi WTF (udah tau lah ya kepanjangannya apa), tapiiii
+                    guest what tahun ini 2026 mulainya kamis->jumat->sabtu yang kalo disingkat
+                    jadi TFS (Time For Success). karena ultahmu kebetulan barengan sama nyuyer
+                    jadi kayaknya pertana ini TFS buat kamu juga. tetap semangat (tanpa sticker desta :v)
+                    <br><br>
+                    <strong>🔥 from WTF to TFS 🔥</strong>
+                </p>
+            </div>
+
+            <!-- Door Prize Section -->
+            <div class="doorprize-section">
+                <h2 style="color: #764ba2; margin-bottom: 20px;">🎁 Kamu Dapat Hadiah! 🎁</h2>
+                <div class="doorprize-container">
+                    <div class="gift-box" id="giftBox">🎁</div>
+                </div>
+                <button class="doorprize-btn" onclick="openDoorPrize()">
+                    ✨ Buka Hadiah ✨
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Door Prize -->
+    <div class="modal" id="prizeModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-icon">🎊</div>
+            <h2>Selamat! 🎉</h2>
+            <p>Kamu mendapatkan hadiah spesial!</p>
+            <a href="https://app.shopeepay.co.id/u/qFCVfPcQHb8wRq5KahWw6?smtt=0.0.9" target="_blank" class="prize-link">
+                🎁 Klaim Hadiahmu
+            </a>
+            <br><br>
+            <small style="color: #999;">Hadiah 2026 TFS</small>
+        </div>
+    </div>
+
+<audio id="bgMusic" loop>
+        <source src="bekson.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Enter Site Function
+                // Enter Site Function dengan Audio
+        function enterSite() {
+            const preloadPage = document.getElementById('preloadPage');
+            const mainPage = document.getElementById('mainPage');
+            const bgMusic = document.getElementById('bgMusic');
+            
+            preloadPage.classList.add('hidden');
+            
+            // Play background music
+            bgMusic.play().catch(error => {
+                console.log("Audio autoplay blocked:", error);
+            });
+            
+            setTimeout(() => {
+                mainPage.classList.add('show');
+                createConfetti();
+            }, 800);
+        }
+
+        // Open Door Prize
+        function openDoorPrize() {
+            const giftBox = document.getElementById('giftBox');
+            const modal = document.getElementById('prizeModal');
+            
+            giftBox.classList.add('opened');
+            
+            setTimeout(() => {
+                modal.classList.add('show');
+                createConfetti();
+                giftBox.classList.remove('opened');
+            }, 500);
+        }
+
+        // Close Modal
+        function closeModal() {
+            const modal = document.getElementById('prizeModal');
+            modal.classList.remove('show');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('prizeModal');
+            if (event.target == modal) {
+                modal.classList.remove('show');
+            }
+        }
+
+        // Create Confetti Effect
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#ff85d1', '#a29bfe'];
+            const confettiCount = 50;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.width = Math.random() * 10 + 5 + 'px';
+                    confetti.style.height = Math.random() * 10 + 5 + 'px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.opacity = Math.random();
+                    confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+                    confetti.style.animation = 'confetti-fall ' + (Math.random() * 3 + 2) + 's linear';
+                    confetti.style.zIndex = '9999';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 5000);
+                }, i * 30);
+            }
+        }
+
+        // Prevent right click (optional - untuk proteksi)
+        // document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+
+</body>
+</html>
